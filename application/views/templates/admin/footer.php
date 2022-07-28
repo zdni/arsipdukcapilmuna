@@ -1,6 +1,6 @@
 
     <footer class="main-footer">
-      <strong>SISTEM PENENTUAN STATUS GIZI BURUK &copy; 2022 </strong>
+      <strong>Sistem Informasi Arsip Pencatatan Sipil DUKCAPIL Kabupaten Muna &copy; 2022 </strong>
     </footer>
   </div>
 

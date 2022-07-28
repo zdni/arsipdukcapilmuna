@@ -16,11 +16,12 @@
               <div class="card">
                 <div class="card-header">
                   <h5>Daftar <?= $page ?></h5>
-                  <button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#modal-tambah-pasien">Tambah <?= $page ?></button>
-                  <div class="modal fade" id="modal-tambah-pasien">
+                  <?php if( $this->session->userdata('role_name') == 'Kepala Bidang' ): ?>
+                  <button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#modal-tambah-kategori">Tambah <?= $page ?></button>
+                  <div class="modal fade" id="modal-tambah-kategori">
                     <div class="modal-dialog">
                       <div class="modal-content">
-                        <form action="<?= base_url('admin/pasien/tambah') ?>" method="post">
+                        <form action="<?= base_url('admin/kategori/tambah') ?>" method="post">
                           <div class="modal-header">
                             <h4 class="modal-title">Tambah <?= $page ?></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -41,12 +42,13 @@
                       </div>
                     </div>
                   </div>
+                  <?php endif; ?>
                 </div>
                 <div class="card-body">
                   <table class="table table-bordered table-striped table-hover table-data">
                     <thead>
                       <th>No.</th>
-                      <th>Pasien</th>
+                      <th>Nama Kategori</th>
                       <th>Aksi</th>
                     </thead>
                     <tbody>
@@ -55,11 +57,11 @@
                           <td><?= $number ?></td>
                           <td><?= $data->nama ?></td>
                           <td>
-                            <button class="btn btn-sm btn-outline-primary" type="button" data-toggle="modal" data-target="#modal-ubah-pasien-<?= $data->id ?>">Ubah</button>
-                            <div class="modal fade" id="modal-ubah-pasien-<?= $data->id ?>">
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-toggle="modal" data-target="#modal-ubah-kategori-<?= $data->id ?>">Ubah</button>
+                            <div class="modal fade" id="modal-ubah-kategori-<?= $data->id ?>">
                               <div class="modal-dialog">
                                 <div class="modal-content">
-                                  <form action="<?= base_url('admin/pasien/ubah') ?>" method="post">
+                                  <form action="<?= base_url('admin/kategori/ubah') ?>" method="post">
                                     <div class="modal-header">
                                       <h4 class="modal-title">Ubah <?= $page ?></h4>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -81,11 +83,11 @@
                                 </div>
                               </div>
                             </div>
-                            <button class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#modal-hapus-pasien-<?= $data->id ?>">Hapus</button>
-                            <div class="modal fade" id="modal-hapus-pasien-<?= $data->id ?>">
+                            <button class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#modal-hapus-kategori-<?= $data->id ?>">Hapus</button>
+                            <div class="modal fade" id="modal-hapus-kategori-<?= $data->id ?>">
                               <div class="modal-dialog">
                                 <div class="modal-content">
-                                  <form action="<?= base_url('admin/pasien/hapus') ?>" method="post">
+                                  <form action="<?= base_url('admin/kategori/hapus') ?>" method="post">
                                     <div class="modal-header">
                                       <h4 class="modal-title">Hapus <?= $page ?></h4>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -94,7 +96,7 @@
                                     </div>
                                     <div class="modal-body">
                                       <input type="hidden" name="id" id="id" class="form-control" required value="<?= $data->id ?>">
-                                      <p>Yakin ingin menghapus pasien <?= $data->nama ?></p>
+                                      <p>Yakin ingin menghapus Kategori <?= $data->nama ?></p>
                                     </div>
                                     <div class="modal-footer justify-content-between">
                                       <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>

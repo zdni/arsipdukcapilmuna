@@ -1,56 +1,56 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pasien extends Uadmin_Controller {
+class Kategori extends User_Controller {
 	
 	function __construct()
 	{
         parent::__construct();
         $this->load->model([
-            'pasien_model',
+            'kategori_model',
         ]);
-        $this->data['menu_id'] = 'pasien_index';
+        $this->data['menu_id'] = 'kategori_index';
 	}
 
 	public function index()
     {
-        $this->data['datas'] = $this->pasien_model->pasien()->result();
-        $this->data['page'] = 'Pasien';
-        $this->render('admin/pasien');
+        $this->data['datas'] = $this->kategori_model->kategori()->result();
+        $this->data['page'] = 'Kategori';
+        $this->render('admin/kategori');
     }
 
     public function tambah()
     {
-        $this->form_validation->set_rules('nama', 'Nama Pasien', 'required');
+        $this->form_validation->set_rules('nama', 'Nama kategori', 'required');
 
         $alert = 'error';
-        $message = 'Gagal Menambah Data Pasien Baru! <br> Silahkan isi semua inputan!';
+        $message = 'Gagal Menambah Data kategori Baru! <br> Silahkan isi semua inputan!';
         if ( $this->form_validation->run() )
         {
             $nama = $this->input->post('nama');
 
             $data['nama'] = $nama;
         
-            if( $this->pasien_model->tambah( $data ) )
+            if( $this->kategori_model->tambah( $data ) )
             {
                 $alert = 'success';
-                $message = 'Berhasil Membuat Pasien Baru!';
+                $message = 'Berhasil Membuat kategori Baru!';
             } else {
-                $message = 'Gagal Membuat Pasien Baru!';
+                $message = 'Gagal Membuat kategori Baru!';
             }
         }
 
         $this->session->set_flashdata('alert', $alert);
         $this->session->set_flashdata('message', $message);
-        return redirect( base_url('admin/pasien') );
+        return redirect( base_url('admin/kategori') );
     }
 
     public function ubah()
     {
-        $this->form_validation->set_rules('nama', 'Nama pasien', 'required');
+        $this->form_validation->set_rules('nama', 'Nama kategori', 'required');
 
         $alert = 'error';
-        $message = 'Gagal Mengubah Data Pasien Baru! <br> Silahkan isi semua inputan!';
+        $message = 'Gagal Mengubah Data kategori Baru! <br> Silahkan isi semua inputan!';
         if ( $this->form_validation->run() )
         {
             $id = $this->input->post('id');
@@ -58,40 +58,40 @@ class Pasien extends Uadmin_Controller {
 
             $data['nama'] = $nama;
         
-            if( $this->pasien_model->ubah( $id, $data ) )
+            if( $this->kategori_model->ubah( $id, $data ) )
             {
                 $alert = 'success';
-                $message = 'Berhasil Mengubah Pasien!';
+                $message = 'Berhasil Mengubah kategori!';
             } else {
-                $message = 'Gagal Mengubah Pasien!';
+                $message = 'Gagal Mengubah kategori!';
             }
         }
 
         $this->session->set_flashdata('alert', $alert);
         $this->session->set_flashdata('message', $message);
-        return redirect( base_url('admin/pasien') );
+        return redirect( base_url('admin/kategori') );
     }
 
     public function hapus()
     {
-        if( !$_POST ) return redirect( base_url('admin/pasien') );
+        if( !$_POST ) return redirect( base_url('admin/kategori') );
 
         $alert = 'error';
-        $message = 'Gagal Menghapus Pasien!';
+        $message = 'Gagal Menghapus kategori!';
 
-        $this->form_validation->set_rules('id', 'Id Pasien', 'required');
+        $this->form_validation->set_rules('id', 'Id kategori', 'required');
         if( $this->form_validation->run() )
         {
             $id = $this->input->post('id');
-            if( $this->pasien_model->hapus( $id ) )
+            if( $this->kategori_model->hapus( $id ) )
             {
                 $alert = 'success';
-                $message = 'Berhasil Menghapus Pasien!';
+                $message = 'Berhasil Menghapus kategori!';
             }
         }
         
         $this->session->set_flashdata('alert', $alert);
         $this->session->set_flashdata('message', $message);
-        return redirect( base_url('admin/pasien') );
+        return redirect( base_url('admin/kategori') );
     }
 }

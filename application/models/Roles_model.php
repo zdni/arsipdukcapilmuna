@@ -1,11 +1,11 @@
 <?php
 
-class Pasien_model extends CI_Model {
-    private $_table = 'pasien';
+class Roles_model extends CI_Model {
+    private $_table = 'roles';
 
-    public function tambah( $data = NULL )
+    public function create( $data = NULL )
     {
-        if ( $data ) {
+        if ($data) {
             $this->db->insert( $this->_table, $data);
             $insert_id = $this->db->insert_id();
             return $insert_id;
@@ -13,16 +13,16 @@ class Pasien_model extends CI_Model {
         return false;
     }
 
-    public function ubah( $id = NULL, $data = NULL )
+    public function update( $user_id = NULL, $data = NULL )
     {
-        if ( $id && $data ) {
-            $this->db->where( $this->_table . '.id', $id );
+        if ($user_id && $data) {
+            $this->db->where( $this->_table . '.id', $user_id );
             return $this->db->update( $this->_table, $data );
         }
         return false;
     }
 
-    public function hapus( $id = NULL )
+    public function delete( $id = NULL )
     {
         if ( $id ) {
             $this->db->where( $this->_table . '.id', $id );
@@ -31,11 +31,10 @@ class Pasien_model extends CI_Model {
         return false;
     }
 
-    public function pasien( $id = NULL, $start = NULL, $end = NULL )
+    public function roles( $id = NULL )
     {
         $this->db->select( $this->_table . '.*' );
-        if( $id ) $this->db->where( $this->_table . '.id', $id);
-        if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
+        if ($id) $this->db->where( $this->_table . '.id', $id );
         return $this->db->get( $this->_table );
     }
 }

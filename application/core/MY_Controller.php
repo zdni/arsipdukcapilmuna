@@ -53,7 +53,7 @@ class Admin_Controller extends User_Controller
 
     public function __construct(){
 	    parent::__construct();
-  	    if( !( in_array( $this->session->userdata( 'role_name' ), ['admin'] ) ) ){
+  	    if( !( in_array( $this->session->userdata( 'role_name' ), ['Kepala Bidang'] ) ) ){
             $this->session->set_flashdata('alert', 'error' );
             redirect( base_url('/admin/laboratories') );
   	    }
@@ -66,7 +66,7 @@ class Uadmin_Controller extends User_Controller
 
     public function __construct(){
 	    parent::__construct();
-  	    if( !( in_array( $this->session->userdata( 'role_name' ), ['admin', 'uadmin'] ) ) ){
+  	    if( !( in_array( $this->session->userdata( 'role_name' ), ['Kepala Bidang', 'Kepala Dinas'] ) ) ){
             $this->session->set_flashdata('alert', 'error' );
             redirect( base_url('/auth/login') );
   	    }

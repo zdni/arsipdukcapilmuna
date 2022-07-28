@@ -1,7 +1,7 @@
 <?php
 
-class Kriteria_model extends CI_Model {
-    private $_table = 'kriteria';
+class Arsip_model extends CI_Model {
+    private $_table = 'arsip';
 
     public function tambah( $data = NULL )
     {
@@ -31,17 +31,17 @@ class Kriteria_model extends CI_Model {
         return false;
     }
 
-    public function kriteria( $id = NULL, $start = NULL, $end = NULL )
+    public function arsip( $id = NULL )
     {
         $this->db->select( $this->_table . '.*' );
+        $this->db->select( 'CONCAT(arsip.tempat_lahir, ", ", DATE_FORMAT(arsip.tanggal_lahir, "%d %M %Y")) AS ttl' );
+        $this->db->select( 'kategori.nama AS kategori' );
         if( $id ) $this->db->where( $this->_table . '.id', $id);
-        if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
-        return $this->db->get( $this->_table );
-    }
-
-    public function jumlah_bobot()
-    {
-        $this->db->select( 'SUM(' . $this->_table . '.bobot) AS jumlah' );
+        $this->db->join(
+            'kategori',
+            'kategori.id = ' . $this->_table . '.kategori_id',
+            'join'
+        );
         return $this->db->get( $this->_table );
     }
 }

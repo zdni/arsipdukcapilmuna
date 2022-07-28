@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SISTEM PENENTUAN STATUS GIZI BURUK</title>
+  <title>SIAP Sipil DUKCAPIL</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/fontawesome-free/css/all.min.css">
@@ -13,8 +13,8 @@
 </head>
 <body class="hold-transition login-page">
   <div class="login-box">
-    <div class="login-logo">
-      <a href="<?= base_url() ?>"><b>SISTEM PENENTUAN</b> STATUS GIZI BURUK</a>
+    <div class="login-logo" style="font-size: 1.4rem;">
+      <a href="<?= base_url() ?>"><b>SISTEM INFORMASI ARSIP</b> PENCATATAN SIPIL DUKCAPIL KABUPATEN MUNA</a>
     </div>
     <div class="card">
       <div class="card-body login-card-body">

@@ -12,42 +12,45 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-lg-3 col-md-3 col-sm-12">
+            <?php if( $this->session->userdata('role_name') == 'Kepala Bidang' ): ?>
+            <div class="col-lg-lg-4 col-md-4 col-sm-12">
               <div class="info-box shadow-sm">
-                <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
+                <span class="info-box-icon bg-secondary"><i class="fas fa-users"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">Data Kriteria</span>
-                  <span class="info-box-number"><?= $kriteria ?></span>
+                  <span class="info-box-text">Data User</span>
+                  <span class="info-box-number"><?= $users ?></span>
                 </div>
               </div>
             </div>
-            <div class="col-lg-lg-3 col-md-3 col-sm-12">
+            <?php endif; ?>
+            <div class="col-lg-lg-4 col-md-4 col-sm-12">
               <div class="info-box shadow-sm">
-                <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
+                <span class="info-box-icon bg-success"><i class="fas fa-book"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">Data Pasien</span>
-                  <span class="info-box-number"><?= $pasien ?></span>
+                  <span class="info-box-text">Data Arsip</span>
+                  <span class="info-box-number"><?= $arsip ?></span>
                 </div>
               </div>
             </div>
-            <div class="col-lg-lg-3 col-md-3 col-sm-12">
+            <div class="col-lg-lg-4 col-md-4 col-sm-12">
               <div class="info-box shadow-sm">
-                <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
+                <span class="info-box-icon bg-info"><i class="fas fa-th"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">Data Penilaian</span>
-                  <span class="info-box-number"><?= $penilaian ?></span>
+                  <span class="info-box-text">Total Kategori</span>
+                  <span class="info-box-number"><?= $kategori ?></span>
                 </div>
               </div>
             </div>
-            <div class="col-lg-lg-3 col-md-3 col-sm-12">
-              <div class="info-box shadow-sm">
-                <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Data Subkriteria</span>
-                  <span class="info-box-number"><?= $subkriteria ?></span>
+            <?php if( $this->session->userdata('role_name') == 'Kepala Bidang' ): ?>
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h3>SELAMAT DATANG DI HALAMAN ADMIN</h3>
+                  <p class="mt-5"><b>SISTEM INFORMASI ARSIP<br>DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL KABUPATEN MUNA</b></p>
                 </div>
               </div>
             </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>

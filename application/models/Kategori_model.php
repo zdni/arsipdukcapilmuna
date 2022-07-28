@@ -1,7 +1,7 @@
 <?php
 
-class Subkriteria_model extends CI_Model {
-    private $_table = 'subkriteria';
+class Kategori_model extends CI_Model {
+    private $_table = 'kategori';
 
     public function tambah( $data = NULL )
     {
@@ -31,12 +31,17 @@ class Subkriteria_model extends CI_Model {
         return false;
     }
 
-    public function subkriteria( $id = NULL, $kriteria_id = NULL, $start = NULL, $end = NULL )
+    public function kategori( $id = NULL, $start = NULL, $end = NULL )
     {
         $this->db->select( $this->_table . '.*' );
         if( $id ) $this->db->where( $this->_table . '.id', $id);
-        if( $kriteria_id ) $this->db->where( $this->_table . '.kriteria_id', $kriteria_id);
         if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
+        return $this->db->get( $this->_table );
+    }
+
+    public function jumlah_bobot()
+    {
+        $this->db->select( 'SUM(' . $this->_table . '.bobot) AS jumlah' );
         return $this->db->get( $this->_table );
     }
 }
