@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kategori extends User_Controller {
+class Kategori extends Staff_Controller {
 	
 	function __construct()
 	{
@@ -22,14 +22,17 @@ class Kategori extends User_Controller {
     public function tambah()
     {
         $this->form_validation->set_rules('nama', 'Nama kategori', 'required');
+        $this->form_validation->set_rules('warna', 'Warna Label', 'required');
 
         $alert = 'error';
         $message = 'Gagal Menambah Data kategori Baru! <br> Silahkan isi semua inputan!';
         if ( $this->form_validation->run() )
         {
             $nama = $this->input->post('nama');
+            $warna = $this->input->post('warna');
 
             $data['nama'] = $nama;
+            $data['warna'] = $warna;
         
             if( $this->kategori_model->tambah( $data ) )
             {
@@ -48,6 +51,7 @@ class Kategori extends User_Controller {
     public function ubah()
     {
         $this->form_validation->set_rules('nama', 'Nama kategori', 'required');
+        $this->form_validation->set_rules('warna', 'Warna Label', 'required');
 
         $alert = 'error';
         $message = 'Gagal Mengubah Data kategori Baru! <br> Silahkan isi semua inputan!';
@@ -55,8 +59,10 @@ class Kategori extends User_Controller {
         {
             $id = $this->input->post('id');
             $nama = $this->input->post('nama');
+            $warna = $this->input->post('warna');
 
             $data['nama'] = $nama;
+            $data['warna'] = $warna;
         
             if( $this->kategori_model->ubah( $id, $data ) )
             {

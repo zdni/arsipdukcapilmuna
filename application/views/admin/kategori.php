@@ -33,6 +33,10 @@
                               <label for="">Nama</label>
                               <input type="text" class="form-control" name="nama" id="nama">
                             </div>
+                            <div class="form-group">
+                              <label for="">Warna Label</label>
+                              <input type="text" class="form-control" name="warna" id="warna">
+                            </div>
                           </div>
                           <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
@@ -49,6 +53,7 @@
                     <thead>
                       <th>No.</th>
                       <th>Nama Kategori</th>
+                      <th>Warna Label</th>
                       <th>Aksi</th>
                     </thead>
                     <tbody>
@@ -56,6 +61,7 @@
                         <tr>
                           <td><?= $number ?></td>
                           <td><?= $data->nama ?></td>
+                          <td><div style="width: 25px; height: 25px; background-color: <?= $data->warna ?>; border-radius: 25px;"></div></td>
                           <td>
                             <button class="btn btn-sm btn-outline-primary" type="button" data-toggle="modal" data-target="#modal-ubah-kategori-<?= $data->id ?>">Ubah</button>
                             <div class="modal fade" id="modal-ubah-kategori-<?= $data->id ?>">
@@ -73,6 +79,10 @@
                                       <div class="form-group">
                                         <label for="">Nama</label>
                                         <input type="text" class="form-control" name="nama" id="nama" value="<?= $data->nama ?>">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="">Warna Label</label>
+                                        <input type="text" class="form-control" name="warna" id="warna" value="<?= $data->warna ?>">
                                       </div>
                                     </div>
                                     <div class="modal-footer justify-content-between">

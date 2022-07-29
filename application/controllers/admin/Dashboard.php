@@ -22,4 +22,16 @@ class Dashboard extends User_Controller {
         $this->data['page'] = 'Beranda';
         $this->render('admin/dashboard');
     }
+
+    public function total_arsip_per_kategori()
+    {
+        $data = $this->arsip_model->total_arsip_per_kategori()->result();
+        echo json_encode( $data );
+    }
+
+    public function grafik_per_tahun()
+    {
+        $data = $this->arsip_model->grafik_pertahun()->result();
+        echo json_encode( $data );
+    }
 }

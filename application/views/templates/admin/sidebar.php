@@ -24,6 +24,7 @@
               </p>
             </a>
           </li>
+          <?php if( in_array($this->session->userdata('role_name'), ['Kepala Bidang', 'Staff'])  ): ?>
           <li class="nav-item">
             <a href="<?= base_url('admin/kategori') ?>" class="nav-link" id="kategori_index">
               <i class="nav-icon fas fa-th"></i>
@@ -40,12 +41,23 @@
               </p>
             </a>
           </li>
+          <?php endif; ?>
           <?php if( $this->session->userdata('role_name') == 'Kepala Bidang' ): ?>
           <li class="nav-item">
             <a href="<?= base_url('admin/users') ?>" class="nav-link" id="users_index">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Manajemen User
+              </p>
+            </a>
+          </li>
+          <?php endif; ?>
+          <?php if( $this->session->userdata('role_name') == 'Kepala Dinas' ): ?>
+            <li class="nav-item">
+            <a href="<?= base_url('admin/laporan') ?>" class="nav-link" id="laporan_index">
+              <i class="nav-icon far fa-file"></i>
+              <p>
+                Rekapitulasi Laporan
               </p>
             </a>
           </li>

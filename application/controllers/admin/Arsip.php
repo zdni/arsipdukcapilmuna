@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Arsip extends User_Controller {
+class Arsip extends Staff_Controller {
 	
 	function __construct()
 	{
