@@ -11,7 +11,7 @@
                   <div class="col-md-4 col-12">
                     <select name="f" id="f" class="form-control">
                       <?php foreach ($fields as $field) { 
-                        if( $field != 'id' ): ?>
+                        if( !in_array( $field, ['id', 'tanggal_lahir', 'tanggal_berkas', 'tanggal_ambil'] ) ): ?>
                         <option value="<?= preg_replace( "/_id/i", "", $field ) ?>" <?= ($f == preg_replace( "/_id/i", "", $field )) ? 'selected' : '' ?>><?= ucwords( preg_replace( "/id/i", "", preg_replace( "/_/", " ", $field ) ) ) ?></option>
                       <?php 
                         endif; 

@@ -24,7 +24,7 @@
               </p>
             </a>
           </li>
-          <?php if( in_array($this->session->userdata('role_name'), ['Kepala Bidang', 'Staff'])  ): ?>
+          <?php if( in_array($this->session->userdata('role_name'), ['Kepala Bidang', 'Staf'])  ): ?>
           <li class="nav-item">
             <a href="<?= base_url('admin/kategori') ?>" class="nav-link" id="kategori_index">
               <i class="nav-icon fas fa-th"></i>

@@ -66,7 +66,7 @@ class Staff_Controller extends User_Controller
 
     public function __construct(){
 	    parent::__construct();
-  	    if( !( in_array( $this->session->userdata( 'role_name' ), ['Kepala Bidang', 'Staff'] ) ) ){
+  	    if( !( in_array( $this->session->userdata( 'role_name' ), ['Kepala Bidang', 'Staf'] ) ) ){
             $this->session->set_flashdata('alert', 'error' );
             redirect( base_url('/admin/dashboard') );
   	    }
