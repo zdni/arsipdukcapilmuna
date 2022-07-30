@@ -12,7 +12,7 @@
                     <select name="f" id="f" class="form-control">
                       <?php foreach ($fields as $field) { 
                         if( $field != 'id' ): ?>
-                        <option value="<?= $field ?>" <?= ($f == $field) ? 'selected' : '' ?>><?= ucwords( preg_replace( "/id/i", "", preg_replace( "/_/", " ", $field ) ) ) ?></option>
+                        <option value="<?= preg_replace( "/_id/i", "", $field ) ?>" <?= ($f == preg_replace( "/_id/i", "", $field )) ? 'selected' : '' ?>><?= ucwords( preg_replace( "/id/i", "", preg_replace( "/_/", " ", $field ) ) ) ?></option>
                       <?php 
                         endif; 
                       } ?>
