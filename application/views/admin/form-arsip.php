@@ -31,13 +31,13 @@
                       <div class="col-md-3 col-12">
                         <div class="form-group">
                           <label for="">Tempat Lahir</label>
-                          <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" value="<?= ( $data && isset($data->nama) ) ?  $data->tempat_lahir : '' ?>" required>
+                          <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" value="<?= ( $data && isset($data->tempat_lahir) ) ?  $data->tempat_lahir : '' ?>" required>
                         </div>
                       </div>
                       <div class="col-md-3 col-12">
                         <div class="form-group">
                           <label for="">Tanggal Lahir</label>
-                          <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="<?= ( $data && isset($data->nama) ) ?  $data->tanggal_lahir : '' ?>" required>
+                          <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="<?= ( $data && isset($data->tanggal_lahir) ) ?  $data->tanggal_lahir : '' ?>" required>
                         </div>
                       </div>
                     </div>
@@ -45,19 +45,19 @@
                       <div class="col-md-4 col-12">
                         <div class="form-group">
                           <label for="">Nama Ayah</label>
-                          <input type="text" class="form-control" name="nama_ayah" id="nama_ayah" value="<?= ( $data && isset($data->nama) ) ?  $data->nama_ayah : '' ?>" required>
+                          <input type="text" class="form-control" name="nama_ayah" id="nama_ayah" value="<?= ( $data && isset($data->nama_ayah) ) ?  $data->nama_ayah : '' ?>" required>
                         </div>
                       </div>
                       <div class="col-md-4 col-12">
                         <div class="form-group">
                           <label for="">Nama Ibu</label>
-                          <input type="text" class="form-control" name="nama_ibu" id="nama_ibu" value="<?= ( $data && isset($data->nama) ) ?  $data->nama_ibu : '' ?>" required>
+                          <input type="text" class="form-control" name="nama_ibu" id="nama_ibu" value="<?= ( $data && isset($data->nama_ibu) ) ?  $data->nama_ibu : '' ?>" required>
                         </div>
                       </div>
                       <div class="col-md-4 col-12">
                         <div class="form-group">
                           <label for="">Nama Pelapor</label>
-                          <input type="text" class="form-control" name="pelapor" id="pelapor" value="<?= ( $data && isset($data->nama) ) ?  $data->pelapor : '' ?>" required>
+                          <input type="text" class="form-control" name="pelapor" id="pelapor" value="<?= ( $data && isset($data->pelapor) ) ?  $data->pelapor : '' ?>" required>
                         </div>
                       </div>
                     </div>
@@ -65,13 +65,13 @@
                       <div class="col-md-6 col-12">
                         <div class="form-group">
                           <label for="">Tanggal Berkas</label>
-                          <input type="date" class="form-control" name="tanggal_berkas" id="tanggal_berkas" value="<?= ( $data && isset($data->nama) ) ?  $data->tanggal_berkas : '' ?>" required>
+                          <input type="date" class="form-control" name="tanggal_berkas" id="tanggal_berkas" value="<?= ( $data && isset($data->tanggal_berkas) ) ?  $data->tanggal_berkas : '' ?>" required>
                         </div>
                       </div>
                       <div class="col-md-6 col-12">
                         <div class="form-group">
                           <label for="">Tanggal Ambil</label>
-                          <input type="date" class="form-control" name="tanggal_ambil" id="tanggal_ambil" value="<?= ( $data && isset($data->nama) ) ?  $data->tanggal_ambil : '' ?>" required>
+                          <input type="date" class="form-control" name="tanggal_ambil" id="tanggal_ambil" value="<?= ( $data && isset($data->tanggal_ambil) ) ?  $data->tanggal_ambil : '' ?>" required>
                         </div>
                       </div>
                     </div>
