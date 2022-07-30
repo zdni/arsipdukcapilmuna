@@ -52,7 +52,7 @@ class BerryRavindran
     
             $end = $key_length;
             $start = 0;
-            while( $end < $kata_length ) {
+            while( $end <= $kata_length ) {
                 if( substr( $kata, $start, $end ) == $keyword ) {
                     $results[] = $data;
                     break;
