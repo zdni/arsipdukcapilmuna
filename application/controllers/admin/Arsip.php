@@ -20,20 +20,25 @@ class Arsip extends Staff_Controller {
             ",ONLY_FULL_GROUP_BY", ""),
             "ONLY_FULL_GROUP_BY", "")'
         );
+        $this->load->library('BerryRavindran');
+        $this->berryRavindran = new BerryRavindran;
 	}
 
 	public function index()
     {
-        $page = ($this->input->get('p') !== NULL) ? $this->input->get('p') : 0;
-        $awal = $page*10;
-        $akhir = ($page*10)+9;
+        $k = ( $this->input->get('k') !== NULL ) ? $this->input->get('k') : '';
+        $f = ( $this->input->get('f') !== NULL ) ? $this->input->get('f') : '';
+        $arsip = $this->arsip_model->arsip()->result();
+        if( $k && $f ){
+            $arsip = $this->berryRavindran->search( $k, $f, $arsip );
+        }
         
         $this->data['kategori'] = $this->kategori_model->kategori()->result();
-        $this->data['datas'] = $this->arsip_model->arsip( NULL, $awal, $akhir )->result();
-        $this->data['total_data'] = $this->arsip_model->arsip()->num_rows();
-        $this->data['p'] = $page;
+        $this->data['datas'] = $arsip;
+        $this->data['fields'] = $this->db->list_fields('arsip');
+        $this->data['k'] = $k;
+        $this->data['f'] = $f;
         
-
         $this->data['page'] = 'Arsip';
         $this->render('admin/arsip');
     }

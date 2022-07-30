@@ -2,8 +2,32 @@
       <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
-            <div class="col-sm-6">
+            <div class="col-md-6 col-12">
               <h1 class="m-0"><?= $page ?></h1>
+            </div>
+            <div class="col-md-6 col-12">
+              <form action="<?= base_url('admin/arsip/index') ?>" method="get">
+                <div class="row">
+                  <div class="col-md-4 col-12">
+                    <select name="f" id="f" class="form-control">
+                      <?php foreach ($fields as $field) { 
+                        if( $field != 'id' ): ?>
+                        <option value="<?= $field ?>" <?= ($f == $field) ? 'selected' : '' ?>><?= ucwords( preg_replace( "/id/i", "", preg_replace( "/_/", " ", $field ) ) ) ?></option>
+                      <?php 
+                        endif; 
+                      } ?>
+                    </select>
+                  </div>
+                  <div class="col-md-8 col-12">
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="k" id="k" value="<?= $k ?>">
+                      <span class="input-group-append">
+                        <button type="submit" class="btn btn-info btn-flat">Cari</button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -19,7 +43,7 @@
                   <a class="btn btn-sm btn-primary" href="<?= base_url('admin/arsip/form?form=tambah') ?>">Tambah <?= $page ?></a>
                 </div>
                 <div class="card-body">
-                  <table class="table table-bordered table-striped table-hover">
+                  <table class="table table-bordered table-striped table-hover table-data-no-search">
                     <thead>
                       <th>No.</th>
                       <th>Nama</th>
@@ -72,13 +96,6 @@
                       <?php $number++; } ?>
                     </tbody>
                   </table>
-                </div>
-                <div class="card-footer clearfix">
-                  <ul class="pagination pagination-sm m-0 float-right">
-                    <?php for ($i=0; $i < ceil($total_data/10); $i++) {  ?>
-                      <li class="page-item <?= ($p == $i) ? 'active': ''; ?>"><a class="page-link" href="<?= base_url('admin/arsip/index?p=') . $i ?>"><?= $i+1 ?></a></li>
-                    <?php } ?>
-                  </ul>
                 </div>
               </div>
             </div>
