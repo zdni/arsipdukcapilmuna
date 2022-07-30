@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 29 Jul 2022 pada 13.25
--- Versi Server: 5.7.38-0ubuntu0.18.04.1
+-- Generation Time: 30 Jul 2022 pada 17.04
+-- Versi Server: 5.7.39-0ubuntu0.18.04.2
 -- PHP Version: 7.2.34-28+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -46,9 +46,17 @@ CREATE TABLE `arsip` (
 --
 
 INSERT INTO `arsip` (`id`, `nama`, `tempat_lahir`, `tanggal_lahir`, `tanggal_berkas`, `tanggal_ambil`, `nama_ayah`, `nama_ibu`, `pelapor`, `kategori_id`, `keterangan`, `file`) VALUES
-(1, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-02-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf'),
-(2, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-02-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 3, 'umum', 'naira_putri_aiza_1659025800.pdf'),
-(3, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-01-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf');
+(1, 'PATTIASINA YOAN', 'KENDARI', '2022-01-11', '2022-02-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf'),
+(2, 'NAIRA UTRI AIZA', 'KENDARI', '2022-01-11', '2022-02-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 3, 'umum', 'naira_putri_aiza_1659025800.pdf'),
+(3, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-01-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'terlambat', 'naira_putri_aiza_1659025800.pdf'),
+(4, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-01-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf'),
+(5, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-01-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf'),
+(6, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-01-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf'),
+(7, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-01-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf'),
+(8, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-01-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf'),
+(9, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-01-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf'),
+(10, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-01-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf'),
+(11, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-01-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf');
 
 -- --------------------------------------------------------
 
@@ -89,7 +97,7 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id`, `name`) VALUES
 (1, 'Kepala Bidang'),
 (2, 'Kepala Dinas'),
-(3, 'Staf\r\n');
+(3, 'Staf');
 
 -- --------------------------------------------------------
 
@@ -153,7 +161,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `arsip`
 --
 ALTER TABLE `arsip`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `kategori`
 --
