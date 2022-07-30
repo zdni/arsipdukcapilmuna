@@ -54,7 +54,9 @@
                       <th>No.</th>
                       <th>Nama Kategori</th>
                       <th>Warna Label</th>
+                      <?php if( $this->session->userdata('role_name') == 'Kepala Bidang' ): ?>
                       <th>Aksi</th>
+                      <?php endif; ?>
                     </thead>
                     <tbody>
                       <?php $number = 1; foreach ($datas as $data) {  ?>
@@ -62,6 +64,7 @@
                           <td><?= $number ?></td>
                           <td><?= $data->nama ?></td>
                           <td><div style="width: 25px; height: 25px; background-color: <?= $data->warna ?>; border-radius: 25px;"></div></td>
+                          <?php if( $this->session->userdata('role_name') == 'Kepala Bidang' ): ?>
                           <td>
                             <button class="btn btn-sm btn-outline-primary" type="button" data-toggle="modal" data-target="#modal-ubah-kategori-<?= $data->id ?>">Ubah</button>
                             <div class="modal fade" id="modal-ubah-kategori-<?= $data->id ?>">
@@ -117,6 +120,7 @@
                               </div>
                             </div>
                           </td>
+                          <?php endif; ?>
                         </tr>                        
                       <?php $number++; } ?>
                     </tbody>

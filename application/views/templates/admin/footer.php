@@ -51,7 +51,7 @@
     if( '<?= $this->session->flashdata('alert') ?>' == 'success' ) Swal.fire( 'Berhasil!', '<?= $this->session->flashdata('message') ?>', 'success' );
     if( '<?= $this->session->flashdata('alert') ?>' == 'warning' ) Swal.fire( 'Peringatan!', '<?= $this->session->flashdata('message') ?>', 'warning' );
     if( '<?= $this->session->flashdata('alert') ?>' == 'error' ) Swal.fire( 'Gagal!', '<?= $this->session->flashdata('message') ?>', 'error' );
-    if( "<?php echo $this->session->flashdata('logout') != null ?>" ) setTimeout(() => { window.location.replace("<?= base_url('auth/logout') ?>") }, 5000);
+    if( "<?php echo $this->session->flashdata('logout') != null ?>" ) setTimeout(() => { window.location.replace("<?= base_url('auth/logout') ?>") }, 1000);
 
     const menu_id = "<?= $menu_id ?>";
     const menu_link = document.getElementById( menu_id );
@@ -80,64 +80,69 @@
         });
 
         // chart total arsip per kategori
-        $.get("<?= base_url('admin/dashboard/total_arsip_per_kategori') ?>", function(data, status){
-          const datas = JSON.parse( data );
-          let total_arsip = [];
-          datas.forEach(data => {
-            total_arsip.push( data.total_arsip )
+        if( $('#donutChart').get(0) ) {
+          $.get("<?= base_url('admin/dashboard/total_arsip_per_kategori') ?>", function(data, status){
+            const datas = JSON.parse( data );
+            let total_arsip = [];
+            datas.forEach(data => {
+              total_arsip.push( data.total_arsip )
+            });
+            
+            var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+            var donutData        = {
+              labels: kategori,
+              datasets: [
+                {
+                  data: total_arsip,
+                  backgroundColor : warna,
+                }
+              ]
+            }
+            var donutOptions     = {
+              maintainAspectRatio : false,
+              responsive : true,
+            }
+            new Chart(donutChartCanvas, {
+              type: 'doughnut',
+              data: donutData,
+              options: donutOptions
+            })
           });
-          
-          var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
-          var donutData        = {
-            labels: kategori,
-            datasets: [
-              {
-                data: total_arsip,
-                backgroundColor : warna,
-              }
-            ]
-          }
-          var donutOptions     = {
-            maintainAspectRatio : false,
-            responsive : true,
-          }
-          new Chart(donutChartCanvas, {
-            type: 'doughnut',
-            data: donutData,
-            options: donutOptions
-          })
-        });
+        }
 
         // grafik total per bulan
-        $.get("<?= base_url('admin/dashboard/grafik_per_tahun') ?>", function(data, status){
-          const datas = JSON.parse( data );
-          const nama_bulan = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-          
-          var areaChartData = {
-            labels  : datas[1],
-            datasets: datas[0]
-          }
-  
-          var barChartCanvas = $('#barChart').get(0).getContext('2d')
-          var barChartData = $.extend(true, {}, areaChartData)
-          var temp0 = areaChartData.datasets[0]
-          barChartData.datasets[0] = temp0
+        if( $('#barChart').get(0) ) {
+          $.get("<?= base_url('admin/dashboard/grafik_per_tahun') ?>", function(data, status){
+            const datas = JSON.parse( data );
+            const nama_bulan = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+            
+            var areaChartData = {
+              labels  : datas[1],
+              datasets: datas[0]
+            }
     
-          var barChartOptions = {
-            responsive              : true,
-            maintainAspectRatio     : false,
-            datasetFill             : false,
-            scales                  : {
-              y: { beginAtZero: true }
-            },
-          }
-    
-          new Chart(barChartCanvas, {
-            type: 'bar',
-            data: barChartData,
-            options: barChartOptions
+            var barChartCanvas = $('#barChart').get(0).getContext('2d')
+            var barChartData = $.extend(true, {}, areaChartData)
+            var temp0 = areaChartData.datasets[0]
+            barChartData.datasets[0] = temp0
+      
+            var barChartOptions = {
+              responsive              : true,
+              maintainAspectRatio     : false,
+              datasetFill             : false,
+              scales                  : {
+                y: { beginAtZero: true }
+              },
+            }
+      
+            new Chart(barChartCanvas, {
+              type: 'bar',
+              data: barChartData,
+              options: barChartOptions
+            });
           });
-        });
+        }
+
       })
     });
 

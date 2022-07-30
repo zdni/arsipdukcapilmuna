@@ -41,7 +41,7 @@ class Profile extends User_Controller {
             $data['username'] = $username;
             $data['name'] = $name;
             
-            if( $this->users_model->update( $id, $data ) )
+            if( $this->users_model->ubah( $id, $data ) )
             {
                 $alert = 'success';
                 $message = 'Berhasil Mengubah Profil!';
@@ -85,7 +85,7 @@ class Profile extends User_Controller {
                 {
                     $data['password'] = password_hash( $new_password, PASSWORD_DEFAULT );
 
-                    if( $this->users_model->update( $id, $data ) )
+                    if( $this->users_model->ubah( $id, $data ) )
                     {
                         $alert = 'success';
                         $message = 'Berhasil Mengubah Password! <br> Silahkan Login ulang karena password anda berubah';
@@ -123,7 +123,7 @@ class Profile extends User_Controller {
 				$data['image'] = $image;
 			}
 
-            if( $this->users_model->update( $id, $data ) )
+            if( $this->users_model->ubah( $id, $data ) )
             {
                 $alert = 'success';
                 $message = 'Berhasil Mengubah Foto Profil!';
