@@ -30,7 +30,10 @@ class Arsip extends Staff_Controller {
         $f = ( $this->input->get('f') !== NULL ) ? $this->input->get('f') : '';
         $arsip = $this->arsip_model->arsip()->result();
         if( $k && $f ){
-            $arsip = $this->berryRavindran->search( $k, $f, $arsip );
+            $hasil = $this->berryRavindran->search( $k, $f, $arsip );
+            $arsip = $hasil[0];
+            $execution_time = $hasil[1];
+            $this->data['execution_time'] = $execution_time;
         }
         
         $this->data['kategori'] = $this->kategori_model->kategori()->result();
@@ -41,6 +44,15 @@ class Arsip extends Staff_Controller {
         
         $this->data['page'] = 'Arsip';
         $this->render('admin/arsip');
+    }
+
+    public function detail( $id = NULL )
+    {
+        if( !$id ) redirect( base_url('admin/arsip') );
+        $this->data['data'] = $this->arsip_model->arsip( $id )->row();
+
+        $this->data['page'] = 'Detail Arsip';
+        $this->render('admin/detail-arsip');
     }
 
     public function form( $id = NULL )

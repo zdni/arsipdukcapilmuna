@@ -37,10 +37,15 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
+              <?php if( $f && $k ): ?>
+                <span class="badge badge-info mb-3">Waktu Pencarian adalah <?= $execution_time ?> miliseconds</span>
+              <?php endif; ?>
               <div class="card">
                 <div class="card-header">
                   <h5>Daftar <?= $page ?></h5>
+                  <?php if( $this->session->userdata('role_name') == 'Staf' ): ?>
                   <a class="btn btn-sm btn-primary" href="<?= base_url('admin/arsip/form?form=tambah') ?>">Tambah <?= $page ?></a>
+                  <?php endif; ?>
                 </div>
                 <div class="card-body">
                   <table class="table table-bordered table-striped table-hover table-data-no-search">
@@ -67,6 +72,8 @@
                           <td><?= $data->kategori ?></td>
                           <td><?= ucwords( $data->keterangan ) ?></td>
                           <td>
+                            <a class="btn btn-sm btn-outline-secondary" href="<?= base_url('admin/arsip/detail/') . $data->id ?>">Detail</a>
+                            <?php if( $this->session->userdata('role_name') == 'Staf' ): ?>
                             <a class="btn btn-sm btn-outline-primary" href="<?= base_url('admin/arsip/form/') . $data->id . '?form=ubah' ?>">Ubah</a>
                             <button class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#modal-hapus-arsip-<?= $data->id ?>">Hapus</button>
                             <div class="modal fade" id="modal-hapus-arsip-<?= $data->id ?>">
@@ -91,6 +98,7 @@
                                 </div>
                               </div>
                             </div>
+                            <?php endif; ?>
                           </td>
                         </tr>                        
                       <?php $number++; } ?>

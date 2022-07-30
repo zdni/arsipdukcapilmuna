@@ -9,6 +9,7 @@ class BerryRavindran
 
     public function search( $keyword, $filter, $datas )
     {
+        $time_start = microtime(true); 
         $results = [];
         
         // pre processing
@@ -65,6 +66,8 @@ class BerryRavindran
                 }
             }
         }
-        return $results;
+        $time_end = microtime(true);
+        $execution_time = ($time_end - $time_start); // dalam miliseconds
+        return [$results, $execution_time];
     }
 }
