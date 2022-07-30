@@ -5,11 +5,11 @@ class MY_Controller extends CI_Controller {
     protected $data = array();
 
     public function __construct(){
-	   parent::__construct();
-	   $this->data["menu_id"] = $this->router->fetch_class() . '_' . $this->router->fetch_method() ; 
-	   $this->data["user_image"] = ( $this->session->userdata( 'user_image' ) != "" ) ? base_url('uploads/users/') . $this->session->userdata( 'user_image' ) : base_url('assets/img/user.png') ;
-	   $this->data["username"] = ( $this->session->userdata( 'username' ) != "" ) ? $this->session->userdata( 'username' ) : "User" ;
-	   $this->data["name"] = ( $this->session->userdata( 'name' ) != "" ) ? $this->session->userdata( 'name' ) : "User" ;
+        parent::__construct();
+        $this->data["menu_id"] = $this->router->fetch_class() . '_' . $this->router->fetch_method() ; 
+        $this->data["user_image"] = ( $this->session->userdata( 'user_image' ) != "" ) ? base_url('uploads/users/') . $this->session->userdata( 'user_image' ) : base_url('assets/img/user.png') ;
+        $this->data["username"] = ( $this->session->userdata( 'username' ) != "" ) ? $this->session->userdata( 'username' ) : "User" ;
+        $this->data["name"] = ( $this->session->userdata( 'name' ) != "" ) ? $this->session->userdata( 'name' ) : "User" ;
     }
 
     protected function render( $view = NULL, $template = NULL ) {

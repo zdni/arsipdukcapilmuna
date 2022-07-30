@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 29 Jul 2022 pada 00.32
+-- Generation Time: 29 Jul 2022 pada 13.25
 -- Versi Server: 5.7.38-0ubuntu0.18.04.1
 -- PHP Version: 7.2.34-28+ubuntu18.04.1+deb.sury.org+1
 
@@ -46,7 +46,9 @@ CREATE TABLE `arsip` (
 --
 
 INSERT INTO `arsip` (`id`, `nama`, `tempat_lahir`, `tanggal_lahir`, `tanggal_berkas`, `tanggal_ambil`, `nama_ayah`, `nama_ibu`, `pelapor`, `kategori_id`, `keterangan`, `file`) VALUES
-(1, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-02-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf');
+(1, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-02-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf'),
+(2, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-02-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 3, 'umum', 'naira_putri_aiza_1659025800.pdf'),
+(3, 'NAIRA PUTRI AIZA', 'KENDARI', '2022-01-11', '2022-01-24', '2022-02-24', 'MUHAMAD RAHMAT HIDAYAT', 'HAMRINA ISRAWATI', 'HAMRINA ISRAWATI', 2, 'umum', 'naira_putri_aiza_1659025800.pdf');
 
 -- --------------------------------------------------------
 
@@ -56,16 +58,18 @@ INSERT INTO `arsip` (`id`, `nama`, `tempat_lahir`, `tanggal_lahir`, `tanggal_ber
 
 CREATE TABLE `kategori` (
   `id` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL
+  `nama` varchar(255) NOT NULL,
+  `warna` varchar(255) NOT NULL DEFAULT '#000'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `kategori`
 --
 
-INSERT INTO `kategori` (`id`, `nama`) VALUES
-(2, 'Akta Kelahiran'),
-(3, 'Akta Kematian');
+INSERT INTO `kategori` (`id`, `nama`, `warna`) VALUES
+(2, 'Akta Kelahiran', '#00a65a'),
+(3, 'Akta Kematian', '#f56954'),
+(4, 'Akta Pernikahan', '#00c0ef');
 
 -- --------------------------------------------------------
 
@@ -109,7 +113,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `name`, `email`, `password`, `image`, `role_id`) VALUES
 (1, 'admin', 'Administrator', 'admin@gmail.com', '$2y$10$uGSBRKsWu2Xv0.xCmtNxPe52W2f10pLAqdlyK4o4WVbshywCmvaOe', 'admin.png', 1),
-(3, 'veenia', 'Veenia Iwo', 'veenia3@gmail.com', '$2y$10$Rn3p7fyF/a5Chj3.Jlrpqe3q1.uYB5r6ofGHkP./eQcRX9FEOR62G', 'admin.png', 3);
+(3, 'veenia', 'Veenia Iwo', 'veenia3@gmail.com', '$2y$10$Rn3p7fyF/a5Chj3.Jlrpqe3q1.uYB5r6ofGHkP./eQcRX9FEOR62G', 'admin.png', 3),
+(4, 'kadis', 'Kepala Dinas', 'kadis@gmail.com', '$2y$10$jnZQrSvZYIIOhTyhzGQ/B.Fk9Ob3GoMR4.4UVfTjGicMuhImLEe.e', 'admin.png', 2);
 
 --
 -- Indexes for dumped tables
@@ -148,12 +153,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `arsip`
 --
 ALTER TABLE `arsip`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -163,7 +168,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

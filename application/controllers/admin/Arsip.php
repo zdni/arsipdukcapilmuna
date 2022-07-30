@@ -12,13 +12,28 @@ class Arsip extends Staff_Controller {
         ]);
 		$this->load->library('upload');
         $this->data['menu_id'] = 'arsip_index';
+        $this->db->query(
+            'SET SESSION sql_mode =
+            REPLACE(REPLACE(REPLACE(
+            @@sql_mode,
+            "ONLY_FULL_GROUP_BY,", ""),
+            ",ONLY_FULL_GROUP_BY", ""),
+            "ONLY_FULL_GROUP_BY", "")'
+        );
 	}
 
 	public function index()
     {
-        $this->data['kategori'] = $this->kategori_model->kategori()->result();
-        $this->data['datas'] = $this->arsip_model->arsip()->result();
+        $page = ($this->input->get('p') !== NULL) ? $this->input->get('p') : 0;
+        $awal = $page*10;
+        $akhir = ($page*10)+9;
         
+        $this->data['kategori'] = $this->kategori_model->kategori()->result();
+        $this->data['datas'] = $this->arsip_model->arsip( NULL, $awal, $akhir )->result();
+        $this->data['total_data'] = $this->arsip_model->arsip()->num_rows();
+        $this->data['p'] = $page;
+        
+
         $this->data['page'] = 'Arsip';
         $this->render('admin/arsip');
     }

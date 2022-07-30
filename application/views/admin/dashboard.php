@@ -51,7 +51,7 @@
               </div>
             </div>
             <?php endif; ?>
-            <?php if( $this->session->userdata('role_name') != 'Kepala Dinas' ): ?>
+            <?php if( $this->session->userdata('role_name') == 'Kepala Dinas' ): ?>
               <div class="col-md-6 col-12">
                 <div class="card card-danger">
                   <div class="card-header">

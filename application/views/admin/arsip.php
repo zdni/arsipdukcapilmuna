@@ -73,6 +73,13 @@
                     </tbody>
                   </table>
                 </div>
+                <div class="card-footer clearfix">
+                  <ul class="pagination pagination-sm m-0 float-right">
+                    <?php for ($i=0; $i < ceil($total_data/10); $i++) {  ?>
+                      <li class="page-item <?= ($p == $i) ? 'active': ''; ?>"><a class="page-link" href="<?= base_url('admin/arsip/index?p=') . $i ?>"><?= $i+1 ?></a></li>
+                    <?php } ?>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

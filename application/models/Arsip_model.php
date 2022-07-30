@@ -31,7 +31,7 @@ class Arsip_model extends CI_Model {
         return false;
     }
 
-    public function arsip( $id = NULL )
+    public function arsip( $id = NULL, $start = NULL, $end = NULL )
     {
         $this->db->select( $this->_table . '.*' );
         $this->db->select( 'CONCAT(arsip.tempat_lahir, ", ", DATE_FORMAT(arsip.tanggal_lahir, "%d %M %Y")) AS ttl' );
@@ -42,7 +42,16 @@ class Arsip_model extends CI_Model {
             'kategori.id = ' . $this->_table . '.kategori_id',
             'join'
         );
+        $this->db->order_by( $this->_table .'.tanggal_berkas');
+        if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
         return $this->db->get( $this->_table );
+    }
+
+    public function arsip_by_tanggal_berkas( $awal = NULL, $akhir = NULL )
+    {
+        if( !is_null($awal) ) $this->db->where( $this->_table .'.tanggal_berkas >=', $awal );
+        if( !is_null($akhir) ) $this->db->where( $this->_table .'.tanggal_berkas <=', $akhir );
+        return $this->arsip();
     }
 
     public function total_arsip_per_kategori()

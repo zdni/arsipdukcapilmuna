@@ -54,12 +54,13 @@
           <?php endif; ?>
           <?php if( $this->session->userdata('role_name') == 'Kepala Dinas' ): ?>
             <li class="nav-item">
-            <a href="<?= base_url('admin/laporan') ?>" class="nav-link" id="laporan_index">
+            <a href="#" class="nav-link" type="button" data-toggle="modal" data-target="#modal-laporan">
               <i class="nav-icon far fa-file"></i>
               <p>
                 Rekapitulasi Laporan
               </p>
             </a>
+            
           </li>
           <?php endif; ?>
         </ul>
