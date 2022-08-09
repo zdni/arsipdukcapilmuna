@@ -18,6 +18,7 @@
                 <div class="card-body">
                   <strong><i class="fas fa-user mr-1"></i> Nama</strong>
                   <p class="text-muted"><?= ( $data && isset($data->nama) ) ?  $data->nama : '' ?></p>
+                  <span class="badge badge-info"><?= ( $data && isset($data->nik) ) ?  $data->nik : '' ?></span>
                   <hr>
                   <strong><i class="fas fa-map-marker-alt mr-1"></i> Tempat, Tanggal Lahir</strong>
                   <p class="text-muted"><?= ( $data && isset($data->ttl) ) ?  $data->ttl : '' ?></p>

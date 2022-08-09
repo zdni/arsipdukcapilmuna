@@ -69,6 +69,7 @@ class Arsip extends Staff_Controller {
     public function tambah()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('nik', 'NIK', 'required');
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required');
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('nama_ayah', 'Nama Ayah', 'required');
@@ -82,6 +83,7 @@ class Arsip extends Staff_Controller {
         if ( $this->form_validation->run() )
         {
             $nama           = $this->input->post('nama');
+            $nik            = $this->input->post('nik');
             $tempat_lahir   = $this->input->post('tempat_lahir');
             $tanggal_lahir  = $this->input->post('tanggal_lahir');
             $nama_ayah      = $this->input->post('nama_ayah');
@@ -130,6 +132,7 @@ class Arsip extends Staff_Controller {
     public function ubah()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('nik', 'NIK', 'required');
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required');
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('nama_ayah', 'Nama Ayah', 'required');
@@ -144,6 +147,7 @@ class Arsip extends Staff_Controller {
         {
             $id             = $this->input->post('id');
             $nama           = $this->input->post('nama');
+            $nik            = $this->input->post('nik');
             $tempat_lahir   = $this->input->post('tempat_lahir');
             $tanggal_lahir  = $this->input->post('tanggal_lahir');
             $nama_ayah      = $this->input->post('nama_ayah');

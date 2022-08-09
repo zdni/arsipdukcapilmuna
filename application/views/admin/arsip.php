@@ -52,6 +52,7 @@
                     <thead>
                       <th>No.</th>
                       <th>Nama</th>
+                      <th>NIK</th>
                       <th>TTL</th>
                       <th>Nama Ayah</th>
                       <th>Nama Ibu</th>
@@ -65,6 +66,7 @@
                         <tr>
                           <td><?= $number ?></td>
                           <td><?= $data->nama ?></td>
+                          <td><?= $data->nik ?></td>
                           <td><?= $data->ttl ?></td>
                           <td><?= $data->nama_ayah ?></td>
                           <td><?= $data->nama_ibu ?></td>

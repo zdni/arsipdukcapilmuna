@@ -22,10 +22,16 @@
                   <div class="card-body">
                     <div class="row">
                       <input type="hidden" class="form-control" name="id" id="id" value="<?= ( $data && isset($data->id) ) ?  $data->id : '' ?>" required>
-                      <div class="col-md-6 col-12">
+                      <div class="col-md-4 col-12">
                         <div class="form-group">
                           <label for="">Nama</label>
                           <input type="text" class="form-control" name="nama" id="nama" value="<?= ( $data && isset($data->nama) ) ?  $data->nama : '' ?>" required>
+                        </div>
+                      </div>
+                      <div class="col-md-3 col-12">
+                        <div class="form-group">
+                          <label for="">NIK</label>
+                          <input type="text" class="form-control" name="nik" id="nik" value="<?= ( $data && isset($data->nik) ) ?  $data->nik : '' ?>" required>
                         </div>
                       </div>
                       <div class="col-md-3 col-12">
@@ -34,7 +40,7 @@
                           <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" value="<?= ( $data && isset($data->tempat_lahir) ) ?  $data->tempat_lahir : '' ?>" required>
                         </div>
                       </div>
-                      <div class="col-md-3 col-12">
+                      <div class="col-md-2 col-12">
                         <div class="form-group">
                           <label for="">Tanggal Lahir</label>
                           <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="<?= ( $data && isset($data->tanggal_lahir) ) ?  $data->tanggal_lahir : '' ?>" required>
