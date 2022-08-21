@@ -91,6 +91,21 @@
                 </div>
               </div>
             <?php endif; ?>
+            <div class="col-12 mt-3">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="text-center mb-5">Profil Dinas Kependudukan dan Pencatatan Sipil Kabupaten Muna</h3>
+                  <h5>Dinas Kependudukan dan Pencatatan Sipil Kabupaten Muna merupakan unsur Pelaksanaan Pemerintah Daerah Kabupaten Muna dalam bidang Pendaftaran dan Pencatatan Penduduk yang mempunyai tugas pokok membantu Kepala Daerah dalam melaksanakan sebagian urusan Pemerintahan dan Pembangunan dibidang Kependudukan dan Pencatatan Sipil sesuai dengan ketentuan dan perundang-undangan yang berlaku.</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h4>Visi Dukcapil Muna "Mewujudkan Tertib Administrasi Kependudukan Berbasis Teknologi Informasi Melalui Pelayanan Prima"</h4>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

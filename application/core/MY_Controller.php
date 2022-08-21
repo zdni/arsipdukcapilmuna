@@ -14,7 +14,7 @@ class MY_Controller extends CI_Controller {
 
     protected function render( $view = NULL, $template = NULL ) {
         if( is_null( $template ) ) {
-            $this->load->view( $iview, $this->data );
+            $this->load->view( $view, $this->data );
         } else {
             $this->data['view_content'] = ( is_null( $view ) ) ? '' : $this->load->view( $view, $this->data, TRUE );
             $this->load->view( 'templates/' . $template . '_template', $this->data );
