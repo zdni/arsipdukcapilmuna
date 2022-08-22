@@ -5,9 +5,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laporan</title>
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
-    <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="<?= base_url('assets/') ?>dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <style>
+        h3 {
+            margin-bottom: 0.5rem;
+            font-family: inherit;
+            font-weight: 500;
+            line-height: 1.2;
+            color: inherit;
+            font-size: 1.75rem;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        .text-center{
+            text-align:center!important
+        }
+        .container-fluid{
+            width:100%;
+            padding-right:15px;
+            padding-left:15px;
+            margin-right:auto;
+            margin-left:auto
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25em 0.4em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+        }
+        .badge-info {
+            color: #fff;
+            background-color: #17a2b8;
+        }
+        .card-body {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            padding: 1.25rem;
+        }
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 1rem;
+            background-color: transparent;
+        }
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+        }
+        .table tbody + tbody {
+            border-top: 2px solid #dee2e6;
+        }
+        .table-bordered {
+            border: 1px solid #dee2e6;
+        }
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #dee2e6;
+        }
+        .table-bordered thead th,
+        .table-bordered thead td {
+            border-bottom-width: 2px;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        @media print {
+            .badge {
+                border: 1px solid #000;
+            }
+            .table {
+                border-collapse: collapse !important;
+            }
+        }
+
+    </style>
 </head>
 <body>
     <h3 class="text-center">Laporan</h3>
@@ -51,8 +136,5 @@
         <?php } ?>
     </div>
 
-    <script src="<?= base_url('assets/') ?>plugins/jquery/jquery.min.js"></script>
-    <script src="<?= base_url('assets/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= base_url('assets/') ?>dist/js/adminlte.min.js"></script>
 </body>
 </html>

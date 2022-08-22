@@ -100,7 +100,7 @@ class Dashboard extends User_Controller {
                     $datas[$result->kategori][$result->tanggal_berkas] = [$result];
                 }
             }
-             else {
+            else {
                 $datas[$result->kategori][$result->tanggal_berkas] = [$result];
             }
         }
@@ -118,6 +118,8 @@ class Dashboard extends User_Controller {
         // data
         $this->data['datas'] = $datas;
 		$html = $this->load->view('report/laporan',$this->data, true);	    
+        // print_r( $html );
+        // die;
         
         // run dompdf
         $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
