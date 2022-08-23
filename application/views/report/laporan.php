@@ -95,10 +95,46 @@
     </style>
 </head>
 <body>
-    <h3 class="text-center">Laporan</h3>
-
     <div class="container-fluid">
-        <?php foreach ($datas as $data => $values) { ?>
+        <div>
+            <div style="float: left">
+                <img src="<?= base_url('assets/img/kabupaten_muna.png') ?>" alt="" style="width: 100px">
+            </div>
+            <div class="text-center">
+                <h1 style="margin: 0">PEMERINTAH KABUPATEN MUNA</h1>
+                <h1 style="margin: 0">DINAS PENDUDUKAN DAN PENCATATAN SIPIL</h1>
+                <p style="margin: 0; font-weight: bold; margin-top: 10px;">JL. M. H. TAMRIN</p>
+            </div>
+        </div>
+        <hr>
+        <h3 class="text-center"><?= $title_pdf ?></h3>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Nama</th>
+                    <th>NIK</th>
+                    <th>Nama Ayah</th>
+                    <th>Nama Ibu</th>
+                    <th>Kategori</th>
+                    <th>Tanggal Berkas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $number = 1; foreach ($datas as $arsip) { ?>
+                    <tr>
+                        <td class="text-center"><?= $number ?></td>
+                        <td><?= $arsip->nama ?></td>
+                        <td><?= $arsip->nik ?></td>
+                        <td><?= $arsip->nama_ayah ?></td>
+                        <td><?= $arsip->nama_ibu ?></td>
+                        <td><?= $arsip->kategori ?></td>
+                        <td><?= date_format(date_create($arsip->tanggal_berkas), 'd F Y') ?></td>
+                    </tr>
+                <?php $number++; } ?>
+            </tbody>
+        </table>
+        <!-- <?php foreach ($datas as $data => $values) { ?>
             <span class="badge badge-info"><?= $data ?></span>
             <?php foreach ($values as $tanggal => $value) { ?>
                 <div class="card-body">
@@ -108,12 +144,11 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Nama</th>
-                                <th>TTL</th>
+                                <th>NIK</th>
                                 <th>Nama Ayah</th>
                                 <th>Nama Ibu</th>
-                                <th>Pelapor</th>
                                 <th>Kategori</th>
-                                <th>Keterangan</th>
+                                <th>Tanggal Berkas</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -133,7 +168,7 @@
                     </table>
                 </div>
             <?php } ?>
-        <?php } ?>
+        <?php } ?> -->
     </div>
 
 </body>

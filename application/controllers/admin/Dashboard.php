@@ -84,31 +84,31 @@ class Dashboard extends User_Controller {
         $tanggal_awal = $this->input->post('mulai_tanggal_berkas');
         $tanggal_akhir = $this->input->post('akhir_tanggal_berkas');
         
-        $results = $this->arsip_model->arsip_by_tanggal_berkas( $tanggal_awal, $tanggal_akhir )->result();
-        if( !count( $results ) ){
+        $datas = $this->arsip_model->arsip_by_tanggal_berkas( $tanggal_awal, $tanggal_akhir )->result();
+        if( !count( $datas ) ){
             $this->session->set_flashdata('alert', 'error');
             $this->session->set_flashdata('message', 'Data Laporan Kosong!');
             return redirect( base_url('admin/dashboard') );
         }
         
-        $datas = [];
-        foreach ($results as $result) {
-            if( isset( $datas[$result->kategori] ) ){
-                if( isset( $datas[$result->kategori][$result->tanggal_berkas] ) ){
-                    $datas[$result->kategori][$result->tanggal_berkas][] = $result;
-                } else {
-                    $datas[$result->kategori][$result->tanggal_berkas] = [$result];
-                }
-            }
-            else {
-                $datas[$result->kategori][$result->tanggal_berkas] = [$result];
-            }
-        }
+        // $datas = [];
+        // foreach ($results as $result) {
+        //     if( isset( $datas[$result->kategori] ) ){
+        //         if( isset( $datas[$result->kategori][$result->tanggal_berkas] ) ){
+        //             $datas[$result->kategori][$result->tanggal_berkas][] = $result;
+        //         } else {
+        //             $datas[$result->kategori][$result->tanggal_berkas] = [$result];
+        //         }
+        //     }
+        //     else {
+        //         $datas[$result->kategori][$result->tanggal_berkas] = [$result];
+        //     }
+        // }
         
         // panggil library yang kita buat sebelumnya yang bernama pdfgenerator
         $this->load->library('pdfgenerator');
         // title dari pdf
-        $this->data['title_pdf'] = 'Laporan';
+        $this->data['title_pdf'] = 'REKAP DATA PENCATATAN SIPIL';
         // filename dari pdf ketika didownload
         $file_pdf = 'laporan';
         // setting paper
@@ -118,7 +118,6 @@ class Dashboard extends User_Controller {
         // data
         $this->data['datas'] = $datas;
 		$html = $this->load->view('report/laporan',$this->data, true);	    
-        
         // run dompdf
         $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
     }
