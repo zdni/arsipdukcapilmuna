@@ -54,6 +54,12 @@ class Arsip_model extends CI_Model {
         return $this->arsip();
     }
 
+    public function arsip_by_kategori( $kategori_id = NULL )
+    {
+        if( !is_null($kategori_id) ) $this->db->where( $this->_table .'.kategori_id', $kategori_id );
+        return $this->arsip();
+    }
+
     public function total_arsip_per_kategori()
     {
         $this->db->select( 'COUNT('. $this->_table .'.id) AS total_arsip' );

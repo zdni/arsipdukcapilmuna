@@ -8,8 +8,18 @@
             <div class="col-md-6 col-12">
               <form action="<?= base_url('admin/arsip/index') ?>" method="get">
                 <div class="row">
-                  <div class="col-md-4 col-12">
+                  <div class="col-md-3 col-12">
+                    <select name="c" id="c" class="form-control">
+                      <option value="0">-- Pilih Kategori --</option>
+                      <?php foreach ($kategori as $field) { ?>
+                        <option value="<?= $field->id ?>" <?= ($c == $field->id) ? 'selected' : '' ?>><?= ucwords( $field->nama ) ?></option>
+                      <?php 
+                      } ?>
+                    </select>
+                  </div>
+                  <div class="col-md-3 col-12">
                     <select name="f" id="f" class="form-control">
+                      <option value="all">Semua</option>
                       <?php foreach ($fields as $field) { 
                         if( !in_array( $field, ['id', 'tanggal_lahir', 'tanggal_berkas', 'tanggal_ambil'] ) ): ?>
                         <option value="<?= preg_replace( "/_id/i", "", $field ) ?>" <?= ($f == preg_replace( "/_id/i", "", $field )) ? 'selected' : '' ?>><?= ucwords( preg_replace( "/id/i", "", preg_replace( "/_/", " ", $field ) ) ) ?></option>
@@ -18,7 +28,7 @@
                       } ?>
                     </select>
                   </div>
-                  <div class="col-md-8 col-12">
+                  <div class="col-md-6 col-12">
                     <div class="input-group">
                       <input type="text" class="form-control" name="k" id="k" value="<?= $k ?>">
                       <span class="input-group-append">

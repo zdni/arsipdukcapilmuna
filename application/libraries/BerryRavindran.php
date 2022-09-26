@@ -7,7 +7,7 @@ class BerryRavindran
 	function __construct() {
 	}
 
-    public function search( $keyword, $filter, $datas )
+    public function search( $keyword, $filters, $datas )
     {
         $time_start = microtime(true); 
         $results = [];
@@ -45,24 +45,26 @@ class BerryRavindran
 
         // fase pencarian
         foreach ($datas as $data) {
-            $kata = $data->$filter;
-            
-            $kata = strtolower( $kata );
-            $kata_array = str_split($kata);
-            $kata_length = strlen($kata);
-    
-            $end = $key_length;
-            $start = 0;
-            while( $end <= $kata_length ) {
-                if( substr( $kata, $start, $end ) == $keyword ) {
-                    $results[] = $data;
-                    break;
-                } else {
-                    if( $end+$start >= $kata_length || $end+$start+1 >= $kata_length ) break;
-    
-                    $a = in_array( $kata_array[$end+$start], $key_array ) ? $kata_array[$end+$start] : '*';
-                    $b = in_array( $kata_array[$end+$start+1], $key_array ) ? $kata_array[$end+$start+1] : '*';
-                    $start = $start + $tabel_BRbc_shift[$a][$b];
+            foreach ($filters as $filter) {
+                $kata = $data->$filter;
+                
+                $kata = strtolower( $kata );
+                $kata_array = str_split($kata);
+                $kata_length = strlen($kata);
+        
+                $end = $key_length;
+                $start = 0;
+                while( $end <= $kata_length ) {
+                    if( substr( $kata, $start, $end ) == $keyword ) {
+                        $results[] = $data;
+                        break;
+                    } else {
+                        if( $end+$start >= $kata_length || $end+$start+1 >= $kata_length ) break;
+        
+                        $a = in_array( $kata_array[$end+$start], $key_array ) ? $kata_array[$end+$start] : '*';
+                        $b = in_array( $kata_array[$end+$start+1], $key_array ) ? $kata_array[$end+$start+1] : '*';
+                        $start = $start + $tabel_BRbc_shift[$a][$b];
+                    }
                 }
             }
         }

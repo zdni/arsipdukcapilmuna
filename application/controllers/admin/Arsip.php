@@ -26,11 +26,30 @@ class Arsip extends Staff_Controller {
 
 	public function index()
     {
+        $fields = $this->db->list_fields('arsip');
+        $fields_ = [];
+        $c = ( $this->input->get('c') !== NULL ) ? $this->input->get('c') : '';
         $k = ( $this->input->get('k') !== NULL ) ? $this->input->get('k') : '';
         $f = ( $this->input->get('f') !== NULL ) ? $this->input->get('f') : '';
-        $arsip = $this->arsip_model->arsip()->result();
+        
+        if( $c ) {
+            $arsip = $this->arsip_model->arsip_by_kategori( $c )->result();
+        } else {
+            $arsip = $this->arsip_model->arsip()->result();
+        }
+        
+        if( $f == 'all' ) {
+            foreach ($fields as $field) {
+                if( !in_array( $field, ['id', 'tanggal_lahir', 'tanggal_berkas', 'tanggal_ambil'] ) ) {
+                    $fields_[] = preg_replace( "/_id/i", "", $field );
+                }
+            }
+        } else {
+            $fields_ = [$f];
+        }
+        
         if( $k && $f ){
-            $hasil = $this->berryRavindran->search( $k, $f, $arsip );
+            $hasil = $this->berryRavindran->search( $k, $fields_, $arsip );
             $arsip = $hasil[0];
             $execution_time = $hasil[1];
             $this->data['execution_time'] = $execution_time;
@@ -38,7 +57,8 @@ class Arsip extends Staff_Controller {
         
         $this->data['kategori'] = $this->kategori_model->kategori()->result();
         $this->data['datas'] = $arsip;
-        $this->data['fields'] = $this->db->list_fields('arsip');
+        $this->data['fields'] = $fields;
+        $this->data['c'] = $c;
         $this->data['k'] = $k;
         $this->data['f'] = $f;
         
