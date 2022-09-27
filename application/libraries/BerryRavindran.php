@@ -45,6 +45,7 @@ class BerryRavindran
 
         // fase pencarian
         foreach ($datas as $data) {
+            $find = false;
             foreach ($filters as $filter) {
                 $kata = $data->$filter;
                 
@@ -57,6 +58,7 @@ class BerryRavindran
                 while( $end <= $kata_length ) {
                     if( substr( $kata, $start, $end ) == $keyword ) {
                         $results[] = $data;
+                        $find = true;
                         break;
                     } else {
                         if( $end+$start >= $kata_length || $end+$start+1 >= $kata_length ) break;
@@ -66,6 +68,7 @@ class BerryRavindran
                         $start = $start + $tabel_BRbc_shift[$a][$b];
                     }
                 }
+                if($find) break;
             }
         }
         $time_end = microtime(true);
