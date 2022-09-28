@@ -92,6 +92,15 @@ class Arsip_model extends CI_Model {
         $this->db->order_by( 'MONTH('. $this->_table .'.tanggal_berkas)');
         return $this->db->get( $this->_table );
     }
+
+    public function pencarian_arsip( $keyword, $fields = [], $kategori_id = NULL )
+    {
+        foreach ($fields as $field) {
+            $this->db->or_like( $this->_table.'.'.$field, $keyword );
+        }
+        if( !is_null($kategori_id) ) $this->db->where( $this->_table .'.kategori_id', $kategori_id );
+        return $this->arsip();
+    }
 }
 
 ?>

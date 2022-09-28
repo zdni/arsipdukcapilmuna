@@ -8,6 +8,12 @@
             <div class="col-md-6 col-12">
               <form action="<?= base_url('admin/arsip/index') ?>" method="get">
                 <div class="row">
+                  <div class="col-md-2 col-12">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" name="algorithm" id="algorithm" <?php if( $algorithm ) echo 'checked'; ?>>
+                      <label for="algorithm" class="form-check-label">Gunakan Algoritma</label>
+                    </div>
+                  </div>
                   <div class="col-md-3 col-12">
                     <select name="c" id="c" class="form-control">
                       <option value="0">-- Pilih Kategori --</option>
@@ -28,7 +34,7 @@
                       } ?>
                     </select>
                   </div>
-                  <div class="col-md-6 col-12">
+                  <div class="col-md-4 col-12">
                     <div class="input-group">
                       <input type="text" class="form-control" name="k" id="k" value="<?= $k ?>">
                       <span class="input-group-append">

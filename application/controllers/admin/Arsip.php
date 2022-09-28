@@ -28,10 +28,11 @@ class Arsip extends Staff_Controller {
     {
         $fields = $this->db->list_fields('arsip');
         $fields_ = [];
+        $algorithm = ( $this->input->get('algorithm') !== NULL ) ? $this->input->get('algorithm') : '';
         $c = ( $this->input->get('c') !== NULL ) ? $this->input->get('c') : '';
         $k = ( $this->input->get('k') !== NULL ) ? $this->input->get('k') : '';
         $f = ( $this->input->get('f') !== NULL ) ? $this->input->get('f') : '';
-        
+
         if( $c ) {
             $arsip = $this->arsip_model->arsip_by_kategori( $c )->result();
         } else {
@@ -49,15 +50,24 @@ class Arsip extends Staff_Controller {
         }
         
         if( $k && $f ){
-            $hasil = $this->berryRavindran->search( $k, $fields_, $arsip );
-            $arsip = $hasil[0];
-            $execution_time = $hasil[1];
+            if( $algorithm ) {
+                $hasil = $this->berryRavindran->search( $k, $fields_, $arsip );
+                $arsip = $hasil[0];
+                $execution_time = $hasil[1];
+            } else {
+                $time_start = microtime(true); 
+                if( ($key = array_search('kategori', $fields_)) !== false ) unset($fields_[$key]);
+                $arsip = $this->arsip_model->pencarian_arsip( $k, $fields_, $c )->result();
+                $time_end = microtime(true);
+                $execution_time = ($time_end - $time_start); // dalam miliseconds
+            }
             $this->data['execution_time'] = $execution_time;
         }
         
         $this->data['kategori'] = $this->kategori_model->kategori()->result();
         $this->data['datas'] = $arsip;
         $this->data['fields'] = $fields;
+        $this->data['algorithm'] = $algorithm;
         $this->data['c'] = $c;
         $this->data['k'] = $k;
         $this->data['f'] = $f;
@@ -116,6 +126,7 @@ class Arsip extends Staff_Controller {
             $file           = $this->input->post('file');
 
             $data['nama']           = $nama;
+            $data['nik']            = $nik;
             $data['tempat_lahir']   = $tempat_lahir;
             $data['tanggal_lahir']  = $tanggal_lahir;
             $data['nama_ayah']      = $nama_ayah;
@@ -180,6 +191,7 @@ class Arsip extends Staff_Controller {
             $file           = $this->input->post('file');
 
             $data['nama']           = $nama;
+            $data['nik']            = $nik;
             $data['tempat_lahir']   = $tempat_lahir;
             $data['tanggal_lahir']  = $tanggal_lahir;
             $data['nama_ayah']      = $nama_ayah;
