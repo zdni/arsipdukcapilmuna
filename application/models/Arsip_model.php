@@ -47,16 +47,17 @@ class Arsip_model extends CI_Model {
         return $this->db->get( $this->_table );
     }
 
-    public function arsip_by_tanggal_berkas( $awal = NULL, $akhir = NULL )
+    public function arsip_by_tanggal_berkas( $awal = NULL, $akhir = NULL, $kategori_id = NULL )
     {
         if( !is_null($awal) ) $this->db->where( $this->_table .'.tanggal_berkas >=', $awal );
         if( !is_null($akhir) ) $this->db->where( $this->_table .'.tanggal_berkas <=', $akhir );
+        if( is_numeric($kategori_id) ) $this->db->where( $this->_table .'.kategori_id', $kategori_id );
         return $this->arsip();
     }
 
     public function arsip_by_kategori( $kategori_id = NULL )
     {
-        if( !is_null($kategori_id) ) $this->db->where( $this->_table .'.kategori_id', $kategori_id );
+        if( is_numeric($kategori_id) ) $this->db->where( $this->_table .'.kategori_id', $kategori_id );
         return $this->arsip();
     }
 
@@ -95,11 +96,19 @@ class Arsip_model extends CI_Model {
 
     public function pencarian_arsip( $keyword, $fields = [], $kategori_id = NULL )
     {
+        $query = 'SELECT arsip.*, CONCAT(arsip.tempat_lahir, ", ", DATE_FORMAT(arsip.tanggal_lahir, "%d %M %Y")) AS ttl, kategori.nama AS kategori FROM arsip JOIN kategori ON kategori.id = arsip.kategori_id WHERE (';
         foreach ($fields as $field) {
-            $this->db->or_like( $this->_table.'.'.$field, $keyword );
+            $query = $query . $this->_table.'.'.$field . ' LIKE "%' . $keyword . '%" OR ';
+            // $this->db->or_like( $this->_table.'.'.$field, $keyword );
         }
-        if( !is_null($kategori_id) ) $this->db->where( $this->_table .'.kategori_id', $kategori_id );
-        return $this->arsip();
+        $query = substr( $query, 0, -3 );
+        $query = $query . ')';
+        if( is_numeric($kategori_id) && $kategori_id != 0 ) $query = $query . ' AND kategori_id = ' . $kategori_id;
+        
+        // if( is_numeric($kategori_id) ) $this->db->where( $this->_table .'.kategori_id', $kategori_id );
+        // return $this->arsip();
+        
+        return $this->db->query( $query );
     }
 }
 

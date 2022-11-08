@@ -57,7 +57,7 @@ class Arsip extends Staff_Controller {
             } else {
                 $time_start = microtime(true); 
                 if( ($key = array_search('kategori', $fields_)) !== false ) unset($fields_[$key]);
-                $arsip = $this->arsip_model->pencarian_arsip( $k, $fields_, $c )->result();
+                $arsip = $this->arsip_model->pencarian_arsip( $k, $fields_, (int) $c )->result();
                 $time_end = microtime(true);
                 $execution_time = ($time_end - $time_start); // dalam miliseconds
             }

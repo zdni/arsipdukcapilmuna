@@ -17,6 +17,15 @@
                 <label for="">Tanggal Akhir Berkas</label>
                 <input type="date" class="form-control" name="akhir_tanggal_berkas" id="akhir_tanggal_berkas" required>
               </div>
+              <?php if(isset($categories)): ?>
+              <div class="form-group">
+                <select name="kategori_id" id="kategori_id" class="form-control">
+                  <?php foreach ($categories as $category) { ?>
+                    <option value="<?= $category->id ?>"><?= $category->nama ?></option>
+                  <?php } ?>
+                </select>
+              </div>
+              <?php endif;?>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>

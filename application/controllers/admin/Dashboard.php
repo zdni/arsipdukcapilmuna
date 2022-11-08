@@ -23,7 +23,9 @@ class Dashboard extends User_Controller {
 
 	public function index()
     {
-        $this->data['kategori'] = count( $this->kategori_model->kategori()->result() );
+        $kategori = $this->kategori_model->kategori()->result();
+        $this->data['kategori'] = count( $kategori );
+        $this->data['categories'] = $kategori;
         $this->data['arsip'] = count( $this->arsip_model->arsip()->result() );
         $this->data['users'] = count( $this->users_model->users()->result() );
         
@@ -83,8 +85,9 @@ class Dashboard extends User_Controller {
         if( !$_POST ) redirect( base_url('admin/dashboard') );
         $tanggal_awal = $this->input->post('mulai_tanggal_berkas');
         $tanggal_akhir = $this->input->post('akhir_tanggal_berkas');
+        $kategori_id = $this->input->post('kategori_id');
         
-        $datas = $this->arsip_model->arsip_by_tanggal_berkas( $tanggal_awal, $tanggal_akhir )->result();
+        $datas = $this->arsip_model->arsip_by_tanggal_berkas( $tanggal_awal, $tanggal_akhir, $kategori_id )->result();
         if( !count( $datas ) ){
             $this->session->set_flashdata('alert', 'error');
             $this->session->set_flashdata('message', 'Data Laporan Kosong!');
